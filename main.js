@@ -13,17 +13,31 @@ button.addEventListener('click', function(event) {
         inputs.push(userText);
         console.log(inputs);
 
-    }
-    newTask.value = "";
+        // Limpar o campo do input definindo o valor como uma string vazia
+        newTask.value = "";
 
-    //criando novo elemento do tipo "li"
-    const li = document.createElement('li');
-    li.textContent = userText;
-    
-    //adicionando a lista <ul>
-    const taskList = document.getElementById('taskList');
-    taskList.appendChild(li);
+        // Criar um novo elemento <li> com o texto da tarefa
+        const li = document.createElement('li');
+        li.textContent = userText;
+
+        // Criar o botão "deletar"
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = "Deletar";
+
+        // Adicionar evento de clique para remover a tarefa
+        deleteButton.addEventListener('click', function() {
+            li.remove(); // Remove o elemento <li> correspondente ao botão "deletar"
+        });
+
+        // Adicionar o botão "deletar" ao elemento <li>
+        li.appendChild(deleteButton);
+
+        // Adicionar o novo item à lista de tarefas (<ul>)
+        const taskList = document.getElementById('taskList');
+        taskList.appendChild(li);
+    }
 });
+
 
 
 
